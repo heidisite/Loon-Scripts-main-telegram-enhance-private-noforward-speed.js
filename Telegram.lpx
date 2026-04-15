@@ -9,10 +9,10 @@ hostname = *.telegram.org, *.t.me, api.telegram.org, t.me, *.cdn.telegram.org
 
 [Script]
 # 核心增强脚本（包含下载加速）
-http-response ^https?://(api|dc)\.telegram\.org/ script-path=https://raw.githubusercontent.com/Heitemi/Loon-Scripts/main/telegram-enhance-private-noforward-speed.js, requires-body=true, timeout=90, tag=Telegram增强核心
+http-response ^https?://(api|dc)\.telegram\.org/ script-path=https://raw.githubusercontent.com/heidisite/Loon-Scripts-main-telegram-enhance-private-noforward-speed.js/refs/heads/mater/telegram-enhance-private-noforward-speed.js, requires-body=true, timeout=90, tag=Telegram增强核心
 
 # 可选：屏蔽推广消息
-http-response ^https?://api\.telegram\.org/ method=POST script-path=https://raw.githubusercontent.com/Heitemi/Loon-Scripts/main/telegram-block-promo.js, requires-body=true, tag=屏蔽推广
+http-response ^https?://api\.telegram\.org/ method=POST script-path=https://raw.githubusercontent.com/heidisite/Loon-Scripts-main-telegram-enhance-private-noforward-speed.js/refs/heads/mater/telegram-block-promo.js, requires-body=true, tag=屏蔽推广
 
 [Rewrite]
 # 强制高质量媒体 + 下载加速 header
