@@ -23,4 +23,4 @@ http-response ^https?://api\.telegram\.org/ method=POST script-path=https://raw.
 # 插件自定义参数（开关）
 # telegramEnhanceEnabled = true
 # telegramNoQuoteForward = true
-# telegramDownloadSpeedBoost = true   （新增：下载加速开关）
+# telegramDownloadSpeedBoost = true
