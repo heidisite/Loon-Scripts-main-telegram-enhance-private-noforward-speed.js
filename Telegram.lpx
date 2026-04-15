@@ -1,0 +1,26 @@
+#!name=Telegram 增强插件（私密+无引用+下载加速版）
+#!desc=广告移除 + 私密下载保存 + 无引用转发 + 下载加速 + 一键开关（2026版）
+#!author=Heitemi + Grok
+#!loon_version=3.2.0+
+#!system=iOS,iPadOS
+
+[MITM]
+hostname = *.telegram.org, *.t.me, api.telegram.org, t.me, *.cdn.telegram.org
+
+[Script]
+# 核心增强脚本（包含下载加速）
+http-response ^https?://(api|dc)\.telegram\.org/ script-path=https://raw.githubusercontent.com/Heitemi/Loon-Scripts/main/telegram-enhance-private-noforward-speed.js, requires-body=true, timeout=90, tag=Telegram增强核心
+
+# 可选：屏蔽推广消息
+http-response ^https?://api\.telegram\.org/ method=POST script-path=https://raw.githubusercontent.com/Heitemi/Loon-Scripts/main/telegram-block-promo.js, requires-body=true, tag=屏蔽推广
+
+[Rewrite]
+# 强制高质量媒体 + 下载加速 header
+^https?://.*\.(telegram|cdn\.telegram)\.org/file/ header -User-Agent "Telegram iOS" -> "Telegram iOS/10.0.0 (iPhone; iOS 18.0; Scale/3.0)"
+^https?://.*\.(telegram|cdn\.telegram)\.org/file/ header -Accept "image/*,video/*,application/*" -> "image/webp,image/apng,image/*,*/*;q=0.8"
+
+[General]
+# 插件自定义参数（开关）
+# telegramEnhanceEnabled = true
+# telegramNoQuoteForward = true
+# telegramDownloadSpeedBoost = true   （新增：下载加速开关）
